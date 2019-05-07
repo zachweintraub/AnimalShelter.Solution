@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+@* previous solution for auto-populating select value *@
+@* <script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("type").value = "@Model.GetType()";
+});
+</script> *@
+<div class="container">
+  <form action="/animals/edit/@Model.GetId()/" method="post">
+    <div class="form-group">
+      <label for="type">What kind of Animal?</label>
+      <select id="type" name="type" class="form-control">
+        <option id="Dog" @if(Model.GetType() == "Dog"){<text>selected</text>}>Dog</option>
+        <option id="Cat" @if(Model.GetType() == "Cat"){<text>selected</text>}>Cat</option>
+        <option id="Fish" @if(Model.GetType() == "Fish"){<text>selected</text>}>Fish</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="name">Animal's Name?</label>
+      <input id="name" name="name" type="text" class="form-control" value="@Model.GetName()"></input>
+    </div>
+    <div class="form-group">
+      <label for="desc">Animal Description?</label>
+      <input id="desc" name="desc" type="text" class="form-control" value="@Model.GetDescription()"></input>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </form>
+</div>

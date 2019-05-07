@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+@using AnimalShelter.Models;
+<div class="container">
+  <h1>Animal DataBase</h1>
+  @if(@Model.Count == 0)
+  {
+    <p>There are no animals to display! Click "New" to add one.</p>
+  }
+  <ul>
+    @foreach(Animal animal in Model)
+    {
+      <li><a href="animals/@animal.GetId()">Type: @animal.GetType(), Name:  @animal.GetName()</a></li>
+    }
+  </ul>
+  <a href="/animals/new">New</a>
+  <a href="/">Home</a>
+</div>

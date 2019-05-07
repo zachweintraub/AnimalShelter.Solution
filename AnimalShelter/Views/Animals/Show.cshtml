@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+@if(@Model.GetId() != 0)
+{
+  <h1>@Model.GetName()</h1>
+  <ul>
+    <li>Type: @Model.GetType()</li>
+    <li>Description: @Model.GetDescription()</li>
+  </ul>
+  <a href="/animals/@Model.GetId()/edit">Edit Details</a>
+  <form action="/animals/delete/@Model.GetId()" method="post" id="delete">
+    <button type="submit">Delete Animal</button>
+  </form>
+}
